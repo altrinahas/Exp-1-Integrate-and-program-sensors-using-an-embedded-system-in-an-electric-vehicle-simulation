@@ -36,7 +36,43 @@ To integrate and program temperature and accelerometer sensors in an embedded sy
  
 ## MATLAB CODE 
 
+clear; clc; close all;
+
+%% Simulation Parameters
+time = linspace(0, 10, 100); 
+battery_temp = 25 + 5*sin(0.5*time); 
+accX = 0.5*sin(2*time);  
+accY = 0.3*cos(2*time); 
+accZ = 9.81 + 0.1*sin(time); 
+
+%% Plot Temperature Sensor Data
+figure;
+subplot(2,1,1);
+plot(time, battery_temp, 'r', 'LineWidth', 2);
+title('Battery Temperature Monitoring');
+xlabel('Time (s)');
+ylabel('Temperature (°C)');
+grid on;
+
+%% Plot Accelerometer Data
+subplot(2,1,2);
+plot(time, accX, 'b', time, accY, 'g', time, accZ, 'm', 'LineWidth', 2);
+title('Vehicle Motion Tracking (Accelerometer)');
+xlabel('Time (s)');
+ylabel('Acceleration (m/s²)');
+legend('X-axis', 'Y-axis', 'Z-axis');
+grid on;
+
+%% Display Key Data in Console
+fprintf('Simulated Data at Final Time (t=10s):\n');
+fprintf('Battery Temperature: %.2f°C\n', battery_temp(end));
+fprintf('Acceleration (X, Y, Z): %.2f, %.2f, %.2f m/s²\n', accX(end), accY(end), accZ(end));
+
+
 ## OUTPUT
+
+![WhatsApp Image 2025-08-19 at 11 45 41_ae558fe3](https://github.com/user-attachments/assets/e8832722-c956-4ffd-be50-eaaa8ec0ce6d)
+
 
  
 ## RESULT
